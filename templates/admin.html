@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            margin-right: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        input {
+            padding: 6px;
+            width: 90%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .score-display {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .status-applied { background-color: #17a2b8; }
+        .status-pending { background-color: #ffc107; color: #333; }
+        .status-recruited { background-color: #28a745; }
+        .status-rejected { background-color: #dc3545; }
+    </style>
+    </head>
+<body>
+<h1>Applicants</h1>
+<a href="{{ url_for('logout') }}">Logout</a>
+<a href="{{ url_for('view_applicants') }}">View Applicants</a>
+<a href="{{ url_for('home') }}">Home</a>
+<table border="1">
+    <tr><th>Name</th><th>Email</th><th>Status</th><th>Actions</th></tr>
+    {% for app in applicants %}
+    <tr>
+        <td>{{ app.name }}</td>
+        <td>{{ app.email }}</td>
+        <td>{{ app.status }}</td>
+        <td>
+            <a href="{{ url_for('shortlist', applicant_id=app._id) }}">Add to waitinglist</a>
+            {% if app.status.lower() in ['pending', 'applied'] %}
+            <form method="POST" action="{{ url_for('update_score', applicant_id=app._id) }}">
+                <input name="Test score" placeholder="Test Score">
+                
+                <input name="Interview score" placeholder="Interview score">
+                <button type="submit">UPDATE</button>
+            </form>
+            {% else %}
+                    <p>Test Score: {{ app.test_score or 'N/A' }}</p>
+                    <p>Interview Score: {{ app.interview_score or 'N/A' }}</p>
+                {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+<script>
+   

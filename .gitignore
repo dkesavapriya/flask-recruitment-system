@@ -1,0 +1,23 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Node dependencies (if using any front-end build tools)
+node_modules/
+
+# Environment variables
+.env
+
+# OS / IDE-specific files
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Deployment folders (optional)
+dist/
+build/

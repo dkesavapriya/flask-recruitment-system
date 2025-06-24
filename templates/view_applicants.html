@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Applicant Categories</title>
+    <a href="{{ url_for('admin') }}"><--Back</a>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 30px;
+            background-color: #f5f7fa;
+        }
+
+        h2 {
+            margin-top: 40px;
+        }
+
+        .section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .applicant {
+            padding: 12px 16px;
+            margin: 8px 0;
+            background-color: #f9f9f9;
+            border-left: 6px solid;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .applicant:hover {
+            background-color: #e6f7ff;
+        }
+
+        .recruited { border-color: #28a745; }
+        .rejected { border-color: #dc3545; }
+        .pending { border-color: #ffc107; }
+
+        .info {
+            flex-grow: 1;
+        }
+
+        .info span {
+            display: inline-block;
+            min-width: 200px;
+        }
+
+        .evaluate-btn {
+            padding: 6px 12px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .evaluate-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .status-badge {
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        .badge-green { background-color: #d4edda; color: #155724; }
+        .badge-red { background-color: #f8d7da; color: #721c24; }
+        .badge-yellow { background-color: #fff3cd; color: #856404; }
+    </style>
+</head>
+<body>
+
+    <div class="section">
+        <h2>🟢 Recruited Candidates</h2>
+        {% for app in recruited %}
+        <div class="applicant recruited">
+            <div class="info">
+                <span>{{ app.name }}</span>
+                <span>{{ app.email }}</span>
+            </div>
+            <span class="status-badge badge-green">{{ app.status }}</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <h2>🔴 Rejected Candidates</h2>
+        {% for app in rejected %}
+        <div class="applicant rejected">
+            <div class="info">
+                <span>{{ app.name }}</span>
+                <span>{{ app.email }}</span>
+            </div>
+            <span class="status-badge badge-red">{{ app.status }}</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <h2>🟡 Pending Applications and Waiting list</h2>
+        {% for app in pending + waitinglist%}
+        <div class="applicant pending">
+            <div class="info">
+                <span>{{ app.name }}</span>
+                <span>{{ app.email }}</span>
+            </div>
+            <a href="{{ url_for('admin') }}" >Evaluate</a>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
