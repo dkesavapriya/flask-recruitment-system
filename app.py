@@ -1,16 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 app.secret_key = os.getenv("app.secret_key")
 
-from dotenv import load_dotenv
-import os
 
 load_dotenv()  # Load environment variables from .env
 
-mongo_uri = os.getenv("MONGO_URI")
+mongo_uri = os.getenv("client")
 client = MongoClient(mongo_uri)
 db = client["recruitment"]
 jobs = db["jobs"]
@@ -136,4 +136,4 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)

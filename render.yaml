@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: flask-backend
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn run:app
+    envVars:
+      - key: client
+        sync: false
+      - key: app.secret_key
+        sync: false
