@@ -114,7 +114,7 @@ def view_applicants():
 
     return render_template("view_applicants.html", recruited=recruited, rejected=rejected, pending=pending,waitinglist=waitinglist)
 
-ADMIN_USERNAME=os.geten("ADMIN_USERNAME")
+ADMIN_USERNAME=os.getenv("ADMIN_USERNAME")
 ADMIN_PASSWORD=os.getenv("ADMIN_PASSWORD")
 
 @app.route("/login", methods=["GET", "POST"])
