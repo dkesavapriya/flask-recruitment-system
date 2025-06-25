@@ -43,6 +43,8 @@ This is a full stack recruitment system built using **Flask** and **MongoDB Atla
 
 MONGO_URI=your_mongodb_uri
 SECRET_KEY=your_secret_key
+'ADMIN_USERNAME'
+'ADMIN_PASSWORD'
 
 
 4. **Run the app**  
@@ -68,12 +70,11 @@ SECRET_KEY=your_secret_key
 4. Add **Environment Variables**:
    - `MONGO_URI`
    - `SECRET_KEY`
+   - 'ADMIN_USERNAME'
+   - 'ADMIN_PASSWORD'
 5. Deploy and grab the live link!
 
 ---
 
-## 📄 License
-
-This project is open source and free to use under the [MIT License](LICENSE).
 
 ---
