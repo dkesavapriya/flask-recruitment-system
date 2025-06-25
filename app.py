@@ -5,12 +5,12 @@ from dotenv import load_dotenv
 import os
 
 app = Flask(__name__)
-app.secret_key = os.getenv("app.secret_key")
+app.secret_key = os.getenv("SECRET_KEY")
 
 
 load_dotenv()  # Load environment variables from .env
 
-mongo_uri = os.getenv("client")
+mongo_uri = os.getenv("MONGO_URI")
 client = MongoClient(mongo_uri)
 db = client["recruitment"]
 jobs = db["jobs"]
