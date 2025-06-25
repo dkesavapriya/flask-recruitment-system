@@ -8,6 +8,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
 
 
+
 load_dotenv()  # Load environment variables from .env
 
 mongo_uri = os.getenv("MONGO_URI")
@@ -113,8 +114,8 @@ def view_applicants():
 
     return render_template("view_applicants.html", recruited=recruited, rejected=rejected, pending=pending,waitinglist=waitinglist)
 
-ADMIN_USERNAME = "admin"
-ADMIN_PASSWORD = "admin123"
+ADMIN_USERNAME=os.geten("ADMIN_USERNAME")
+ADMIN_PASSWORD=os.getenv("ADMIN_PASSWORD")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
