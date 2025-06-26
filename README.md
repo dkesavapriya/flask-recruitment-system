@@ -54,7 +54,7 @@ SECRET_KEY=your_secret_key
 
 ## 🌍 Live Demo (After Deployment)
 
-- 🔗 [Live App (Render)](https://your-render-link.com)
+- 🔗 [Live App (Render)](https://flask-recruitment-system.onrender.com)
 - 💻 GitHub: [Project Link](https://github.com/dkesavapriya/recruitment-system)
 
 ---
