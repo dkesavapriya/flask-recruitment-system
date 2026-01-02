@@ -17,7 +17,7 @@ This is a full stack recruitment system built using **Flask** and **MongoDB Atla
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: HTML, CSS, JavaScript
+- **Frontend**: HTML, CSS
 - **Backend**: Flask (Python)
 - **Database**: MongoDB Atlas
 - **Deployment**:
@@ -54,7 +54,7 @@ SECRET_KEY=your_secret_key
 
 ## 🌍 Live Demo (After Deployment)
 
-- 🔗 [Live App (Render)]
+- 🔗 [[Live App (Render)]](https://flask-recruitment-system.onrender.com)
 - 💻 GitHub: [Project Link](https://github.com/dkesavapriya/recruitment-system)
 
 ---
